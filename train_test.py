@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Created on Mon May 15 23:16:55 2023
 
@@ -12,7 +11,6 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 from tqdm import tqdm
 
-# Display the generated samples
 import matplotlib.pyplot as plt
 
 
@@ -158,8 +156,8 @@ def train(generator:nn.Module,discriminator:nn.Module,adversarial_loss=nn.BCELos
         for i, (real_images, labels) in enumerate(dataloader):
             real_images = real_images.view(-1, image_dim).to(device)
             labels = torch.eye(label_dim)[labels].to(device)  # One-hot encoding
-    # ...
-            # Train the discriminator
+            
+            # Train the DISC
             discriminator_optimizer.zero_grad()
             real_labels = torch.ones(real_images.size(0), 1).to(device)
             fake_labels = torch.zeros(real_images.size(0), 1).to(device)
@@ -176,7 +174,7 @@ def train(generator:nn.Module,discriminator:nn.Module,adversarial_loss=nn.BCELos
             discriminator_loss.backward()
             discriminator_optimizer.step()
     
-            # Train the generator
+            # Train the GEN
             generator_optimizer.zero_grad()
             noise = torch.randn(real_images.size(0), latent_dim).to(device)
             fake_images = generator(noise, labels)
@@ -186,7 +184,7 @@ def train(generator:nn.Module,discriminator:nn.Module,adversarial_loss=nn.BCELos
             generator_loss.backward()
             generator_optimizer.step()
     
-            # Print training progress
+            # INFO
             if (i + 1) % bar_update == 0:
                 bar.update(bar_update)
                 bar.desc=f"Epoch:[{epoch+1}/{num_epochs}-({i+1}/{len(dataloader)})], Loss:[D:{discriminator_loss.item():.4f}, G:{generator_loss.item():.4f}]"
