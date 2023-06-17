@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 Created on Sun May 14 17:00:07 2023
 
@@ -7,7 +7,6 @@ Created on Sun May 14 17:00:07 2023
 import torch
 import torch.nn as nn
 
-# Define the generator network
 class Generator(nn.Module):
     def __init__(self,device=None, label_dim=10, image_dim= 28*28, latent_dim=100,train_id=None):
         super(Generator, self).__init__()
