@@ -7,6 +7,6 @@ The main goal of the project is to imitate human handwriting using the "Conditio
 > CNN structure was not used in this project.
 
 ### Models
-<br>This file includes 2 AI (Generator & Discriminator)
+This file includes 2 AI (Generator & Discriminator)
 <br>Initial save and load function defined
 
