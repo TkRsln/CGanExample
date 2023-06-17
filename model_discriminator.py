@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 """
 Created on Sun May 14 17:00:07 2023
 
@@ -7,8 +7,6 @@ Created on Sun May 14 17:00:07 2023
 import torch
 import torch.nn as nn
 
-
-# Define the discriminator network
 class Discriminator(nn.Module):
     def __init__(self,device=None ,image_dim=28*28, label_dim=10,train_id=None):
         super(Discriminator, self).__init__()
